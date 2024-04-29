@@ -1,8 +1,0 @@
-print("Solar")
-print("Solar")
-print("Solar")
-print("Solar")
-print("Solar")
-print("Solar")
-print("Solar")
-print("Solar")
