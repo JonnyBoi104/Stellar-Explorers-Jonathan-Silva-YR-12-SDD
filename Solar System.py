@@ -2,7 +2,7 @@ from tkinter import *
 from os import path
 from customtkinter import *
 from PIL import Image  
-kjdsfh
+
 
 # set theme 
 set_appearance_mode("dark")
@@ -10,7 +10,7 @@ set_default_color_theme("blue")
 
 #root = Tk() 
 root = CTk() 
-root.title('STELLAR EXPLORERS')  
+root.title('STELLAR EXPLORERS - Jonathan Silva')  
 app_width = 1000
 app_height = 700 
 
@@ -115,7 +115,7 @@ def options_view():
    #Themes
     theme_label = CTkLabel(options_view_frame, text="Themes", text_color="black", font=theme_font) 
     theme_label.place(relx=0.2, rely=0.225) 
-    themes = ["Dark", "Light", "Midnight", "Navy", "Biege", "Botanical"]
+    themes = ["Dark Blue", "Blue", "Green", "Light", "System", "Dark"]
     theme_combo = CTkComboBox(options_view_frame, values=themes, command=theme_select) 
     theme_combo.place(relx=0.18, rely=0.3)
 
@@ -137,7 +137,7 @@ def quiz_view():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")
 
 main_frame = CTkFrame(root)
-main_frame.pack(expand=True, fil=BOTH)
+main_frame.pack(expand=True, fill=BOTH)
 title_label = CTkLabel(main_frame, text="Stellar Explorers", text_color= "Black", font=title_font)
 title_label.place(relx=0.5, rely=0.13, anchor="center")
 start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=35) 
