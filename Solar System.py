@@ -1,4 +1,4 @@
-from tkinter import *  
+import tkinter as tk
 from os import path
 from customtkinter import *
 from PIL import Image  
@@ -26,7 +26,7 @@ root.geometry(f'{app_width}x{app_height}+{int(x)}+{int(y)}')
 title_font = ("Cambria", 35)
 theme_font = ("Cambria", 28)
 
-#Back Buttons and stuff--------------------------------------------------------------------------#
+#Back Buttons ----------------------------------------------------------------------------------#
 
 def back_to_main_menu(): #Select view back button
     select_view_frame.pack_forget() 
@@ -46,10 +46,36 @@ def back_to_sequential_view(): #sun back button
 
 def back_to_sequential_view_2(): #Orbit View Back button
     orbit_view_frame.pack_forget()
-    select_view_frame.pack(expand=True, fill=BOTH) 
+    select_view_frame.pack(expand=True, fill=BOTH)  
+
+def back_to_sun_view(): 
+    mercury_view_frame.pack_forget() 
+    sun_view_frame.pack(expand=True, fill=BOTH)
 
 
 #-------------------------------------------------------------------------------------------------#
+
+#Next Buttons-------------------------------------------------------------------------------------#
+
+def next_to_mercury():
+    sun_view_frame.pack_forget()  
+
+    global mercury_view_frame 
+    mercury_view_frame = CTkFrame(root) 
+    mercury_view_frame.pack(expand=True, fill=BOTH) 
+
+    mercury_title_label = CTkLabel(mercury_view_frame, text="MERCURY", text_color= "Black", font=title_font)
+    mercury_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    mercury_text = CTkScrollableFrame(mercury_view_frame, width=400, height=550) 
+    mercury_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(mercury_view_frame, text="Back", width=50, command=back_to_sun_view)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_venus) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+
+def next_to_venus(): 
+    pass
 
 
 #Start Button onwards---------------------------------------------------------------------------------#
@@ -79,10 +105,14 @@ def sequential_view():
     sun_view_frame.pack(expand=True, fill=BOTH) 
 
     sun_title_label = CTkLabel(sun_view_frame, text="SUN", text_color= "Black", font=title_font)
-    sun_title_label.place(relx=0.5, rely=0.13, anchor="center") 
+    sun_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    sun_text = CTkScrollableFrame(sun_view_frame, width=400, height=550) 
+    sun_text.place(relx=0.55, rely=0.165) 
 
-    back_btn = CTkButton(sun_view_frame, text="Back", text_color="Black", width=50, command=back_to_sequential_view)
-    back_btn.place(relx=0.09, rely=0.1, anchor="center") 
+    back_btn = CTkButton(sun_view_frame, text="Back", width=50, command=back_to_sequential_view)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_mercury) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center") 
 
 def orbit_view():
     select_view_frame.pack_forget()  
@@ -102,7 +132,8 @@ def orbit_view():
 
 #Options Button onwards-------------------------------------------------------------------------------------------------------------#
 
-def options_view():
+def options_view(): 
+    
     main_frame.pack_forget()
 
     global options_view_frame
@@ -112,15 +143,36 @@ def options_view():
     back_btn = CTkButton(options_view_frame, text="Back", text_color="Black", width=50, command=back_to_main_menu_2)
     back_btn.place(relx=0.09, rely=0.1, anchor="center") 
 
-   #Themes
+#Themes
     theme_label = CTkLabel(options_view_frame, text="Themes", text_color="black", font=theme_font) 
     theme_label.place(relx=0.2, rely=0.225) 
     themes = ["Dark Blue", "Blue", "Green", "Light", "System", "Dark"]
     theme_combo = CTkComboBox(options_view_frame, values=themes, command=theme_select) 
     theme_combo.place(relx=0.18, rely=0.3)
 
+#Zoom
+    zoom_label = CTkLabel(options_view_frame, text="Zoom", text_color="black", font=theme_font) 
+    zoom_label.place(relx=0.45, rely=0.225)  
+    zoom = ["Zoom In", "Zoom Out"] 
+    zoom_combo = CTkComboBox(options_view_frame, values=zoom, command=zoom_select)
+    zoom_combo.place(relx=0.424, rely=0.3)
+
+#Font
+    font_label = CTkLabel(options_view_frame, text="Font", text_color="black", font=theme_font) 
+    font_label.place(relx=0.7, rely=0.225)  
+    font = ["Arial", "Cambira", "Spectral"] 
+    font_combo = CTkComboBox(options_view_frame, values=font, command=zoom_select)
+    font_combo.place(relx=0.665, rely=0.3)
+
 def theme_select(choice): 
     pass
+
+def zoom_select(choice): 
+    pass
+
+ 
+
+
 
    #Zoom
 #--------------------------------------------------------------------------------------------------------------------------------------#
