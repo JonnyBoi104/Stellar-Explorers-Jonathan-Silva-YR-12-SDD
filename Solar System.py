@@ -48,18 +48,53 @@ def back_to_sequential_view_2(): #Orbit View Back button
     orbit_view_frame.pack_forget()
     select_view_frame.pack(expand=True, fill=BOTH)  
 
-def back_to_sun_view(): 
+def back_to_sun(): 
     mercury_view_frame.pack_forget() 
-    sun_view_frame.pack(expand=True, fill=BOTH)
+    sun() 
 
+def back_to_mercury(): 
+    venus_view_frame.pack_forget()
+    mercury() 
+
+def back_to_venus(): 
+    earth_view_frame.pack_forget() 
+    venus() 
+
+def back_to_earth(): 
+    mars_view_frame.pack_forget() 
+    earth()
+
+def back_to_mars(): 
+    astbelt_view_frame.pack_forget() 
+    mars() 
+
+def back_to_astbelt(): 
+    jupiter_view_frame.pack_forget() 
+    astbelt() 
+
+def back_to_jupiter(): 
+    saturn_view_frame.pack_forget() 
+    jupiter()
 
 #-------------------------------------------------------------------------------------------------#
 
-#Next Buttons-------------------------------------------------------------------------------------#
+#PLANets 
+def sun(): 
+    global sun_view_frame 
+    sun_view_frame = CTkFrame(root)
+    sun_view_frame.pack(expand=True, fill=BOTH) 
 
-def next_to_mercury():
-    sun_view_frame.pack_forget()  
+    sun_title_label = CTkLabel(sun_view_frame, text="SUN", text_color= "Black", font=title_font)
+    sun_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    sun_text = CTkScrollableFrame(sun_view_frame, width=400, height=550) 
+    sun_text.place(relx=0.55, rely=0.165) 
 
+    back_btn = CTkButton(sun_view_frame, text="Back", width=50, command=back_to_sequential_view)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_mercury) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+
+def mercury(): 
     global mercury_view_frame 
     mercury_view_frame = CTkFrame(root) 
     mercury_view_frame.pack(expand=True, fill=BOTH) 
@@ -69,14 +104,138 @@ def next_to_mercury():
     mercury_text = CTkScrollableFrame(mercury_view_frame, width=400, height=550) 
     mercury_text.place(relx=0.55, rely=0.165) 
 
-    back_btn = CTkButton(mercury_view_frame, text="Back", width=50, command=back_to_sun_view)
+    back_btn = CTkButton(mercury_view_frame, text="Back", width=50, command=back_to_sun)
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
-    next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_venus) 
+    next_btn = CTkButton(mercury_view_frame, text="Next", width=50, command=next_to_venus) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center") 
 
-def next_to_venus(): 
+def venus():  
+    global venus_view_frame 
+    venus_view_frame = CTkFrame(root) 
+    venus_view_frame.pack(expand=True, fill=BOTH) 
+
+    venus_title_label = CTkLabel(venus_view_frame, text="VENUS", text_color= "Black", font=title_font)
+    venus_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    venus_text = CTkScrollableFrame(venus_view_frame, width=400, height=550) 
+    venus_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(venus_view_frame, text="Back", width=50, command=back_to_mercury)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(venus_view_frame, text="Next", width=50, command=next_to_earth) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+
+
+def earth(): 
+    global earth_view_frame 
+    earth_view_frame = CTkFrame(root) 
+    earth_view_frame.pack(expand=True, fill=BOTH) 
+
+    earth_title_label = CTkLabel(earth_view_frame, text="EARTH", text_color= "Black", font=title_font)
+    earth_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    earth_text = CTkScrollableFrame(earth_view_frame, width=400, height=550) 
+    earth_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(earth_view_frame, text="Back", width=50, command=back_to_venus)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(earth_view_frame, text="Next", width=50, command=next_to_mars) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+
+def mars():
+    global mars_view_frame 
+    mars_view_frame = CTkFrame(root) 
+    mars_view_frame.pack(expand=True, fill=BOTH) 
+
+    mars_title_label = CTkLabel(mars_view_frame, text="MARS", text_color= "Black", font=title_font)
+    mars_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    mars_text = CTkScrollableFrame(mars_view_frame, width=400, height=550) 
+    mars_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(mars_view_frame, text="Back", width=50, command=back_to_earth)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(mars_view_frame, text="Next", width=50, command=next_to_astbelt) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+
+def astbelt(): 
+    global astbelt_view_frame 
+    astbelt_view_frame = CTkFrame(root) 
+    astbelt_view_frame.pack(expand=True, fill=BOTH) 
+
+    astbelt_title_label = CTkLabel(astbelt_view_frame, text="ASTEROID BELT", text_color= "Black", font=title_font)
+    astbelt_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    astbelt_text = CTkScrollableFrame(astbelt_view_frame, width=400, height=550) 
+    astbelt_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(astbelt_view_frame, text="Back", width=50, command=back_to_mars)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(astbelt_view_frame, text="Next", width=50, command=next_to_jupiter) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+
+def jupiter(): 
+    global jupiter_view_frame 
+    jupiter_view_frame = CTkFrame(root) 
+    jupiter_view_frame.pack(expand=True, fill=BOTH) 
+
+    jupiter_title_label = CTkLabel(jupiter_view_frame, text="JUPITER", text_color= "Black", font=title_font)
+    jupiter_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    jupiter_text = CTkScrollableFrame(jupiter_view_frame, width=400, height=550) 
+    jupiter_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(jupiter_view_frame, text="Back", width=50, command=back_to_astbelt)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(jupiter_view_frame, text="Next", width=50, command=next_to_saturn) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+
+def saturn(): 
+    global saturn_view_frame 
+    saturn_view_frame = CTkFrame(root) 
+    saturn_view_frame.pack(expand=True, fill=BOTH) 
+
+    saturn_title_label = CTkLabel(saturn_view_frame, text="SATURN", text_color= "Black", font=title_font)
+    saturn_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    saturn_text = CTkScrollableFrame(saturn_view_frame, width=400, height=550) 
+    saturn_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(saturn_view_frame, text="Back", width=50, command=back_to_jupiter)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(saturn_view_frame, text="Next", width=50, command=next_to_uranus) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+
+def uranus(): 
     pass
 
+#Next Buttons-------------------------------------------------------------------------------------#
+
+def next_to_mercury():
+    sun_view_frame.pack_forget()  
+    mercury()
+
+def next_to_venus():  
+    mercury_view_frame.pack_forget()
+    venus()
+
+def next_to_earth(): 
+    venus_view_frame.pack_forget()
+    earth() 
+
+def next_to_mars(): 
+    earth_view_frame.pack_forget()
+    mars() 
+
+def next_to_astbelt(): 
+    mars_view_frame.pack_forget()
+    astbelt()
+
+def next_to_jupiter(): 
+    astbelt_view_frame.pack_forget()
+    jupiter()
+
+def next_to_saturn(): 
+    jupiter_view_frame.pack_forget() 
+    saturn() 
+
+def next_to_uranus(): 
+    saturn_view_frame.pack_forget() 
+    uranus()
 
 #Start Button onwards---------------------------------------------------------------------------------#
 
@@ -99,20 +258,8 @@ def select_view():
 
 def sequential_view(): 
     select_view_frame.pack_forget() 
-
-    global sun_view_frame 
-    sun_view_frame = CTkFrame(root)
-    sun_view_frame.pack(expand=True, fill=BOTH) 
-
-    sun_title_label = CTkLabel(sun_view_frame, text="SUN", text_color= "Black", font=title_font)
-    sun_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    sun_text = CTkScrollableFrame(sun_view_frame, width=400, height=550) 
-    sun_text.place(relx=0.55, rely=0.165) 
-
-    back_btn = CTkButton(sun_view_frame, text="Back", width=50, command=back_to_sequential_view)
-    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
-    next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_mercury) 
-    next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+    sun()
+    
 
 def orbit_view():
     select_view_frame.pack_forget()  
