@@ -74,7 +74,19 @@ def back_to_astbelt():
 
 def back_to_jupiter(): 
     saturn_view_frame.pack_forget() 
-    jupiter()
+    jupiter() 
+
+def back_to_saturn(): 
+    uranus_view_frame.pack_forget() 
+    saturn() 
+
+def back_to_uranus(): 
+    neptune_view_frame.pack_forget() 
+    uranus()
+
+def back_to_main_menu_4(): #From neptune to main menu back button
+    neptune_view_frame.pack_forget() 
+    main_menu()
 
 #-------------------------------------------------------------------------------------------------#
 
@@ -201,7 +213,34 @@ def saturn():
     next_btn.place(relx=0.91, rely=0.1, anchor="center") 
 
 def uranus(): 
-    pass
+    global uranus_view_frame 
+    uranus_view_frame = CTkFrame(root) 
+    uranus_view_frame.pack(expand=True, fill=BOTH) 
+
+    uranus_title_label = CTkLabel(uranus_view_frame, text="URANUS", text_color= "Black", font=title_font)
+    uranus_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    uranus_text = CTkScrollableFrame(uranus_view_frame, width=400, height=550) 
+    uranus_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(uranus_view_frame, text="Back", width=50, command=back_to_saturn)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(uranus_view_frame, text="Next", width=50, command=next_to_neptune) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+
+def neptune(): 
+    global neptune_view_frame 
+    neptune_view_frame = CTkFrame(root) 
+    neptune_view_frame.pack(expand=True, fill=BOTH) 
+
+    neptune_title_label = CTkLabel(neptune_view_frame, text="NEPTUNE", text_color= "Black", font=title_font)
+    neptune_title_label.place(relx=0.5, rely=0.1, anchor="center") 
+    neptune_text = CTkScrollableFrame(neptune_view_frame, width=400, height=550) 
+    neptune_text.place(relx=0.55, rely=0.165) 
+
+    back_btn = CTkButton(neptune_view_frame, text="Back", width=50, command=back_to_uranus)
+    back_btn.place(relx=0.09, rely=0.1, anchor="center")  
+    next_btn = CTkButton(neptune_view_frame, text="FINISH", width=50, command=back_to_main_menu_4) 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
 
 #Next Buttons-------------------------------------------------------------------------------------#
 
@@ -237,11 +276,15 @@ def next_to_uranus():
     saturn_view_frame.pack_forget() 
     uranus()
 
+def next_to_neptune(): 
+    uranus_view_frame.pack_forget()
+    neptune()
+
 #Start Button onwards---------------------------------------------------------------------------------#
 
 def select_view():
     main_frame.pack_forget()
-
+    main_frame.pack_forget()
     global select_view_frame
     select_view_frame = CTkFrame(root)
     select_view_frame.pack(expand=True, fill=BOTH)
@@ -335,6 +378,8 @@ def quiz_view():
     back_btn = CTkButton(quiz_view_frame, text="Back", text_color="Black", width=50, command=back_to_main_menu_3)
     back_btn.place(relx=0.09, rely=0.1, anchor="center")
 
+#Main Menu-  
+
 main_frame = CTkFrame(root)
 main_frame.pack(expand=True, fill=BOTH)
 title_label = CTkLabel(main_frame, text="Stellar Explorers", text_color= "Black", font=title_font)
@@ -345,6 +390,31 @@ options_btn = CTkButton(main_frame, text = "Options", command=options_view, widt
 options_btn.place(relx=0.5, rely=0.45, anchor="center") 
 quiz_btn = CTkButton(main_frame, text= "Quiz", command=quiz_view, width=200, height=35)
 quiz_btn.place(relx=0.5, rely=0.59, anchor="center")
+
+
+def main_menu(): 
+    main_frame = CTkFrame(root)
+    main_frame.pack(expand=True, fill=BOTH)
+    title_label = CTkLabel(main_frame, text="Stellar Explorers", text_color= "Black", font=title_font)
+    title_label.place(relx=0.5, rely=0.13, anchor="center")
+    start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=35) 
+    start_btn.pack(pady=200)
+    options_btn = CTkButton(main_frame, text = "Options", command=options_view, width=200, height=35)   
+    options_btn.place(relx=0.5, rely=0.45, anchor="center") 
+    quiz_btn = CTkButton(main_frame, text= "Quiz", command=quiz_view, width=200, height=35)
+    quiz_btn.place(relx=0.5, rely=0.59, anchor="center")
+
+def main_menu_2(): #Main menu from neptune 
+    main_frame = CTkFrame(root)
+    main_frame.pack(expand=True, fill=BOTH)
+    title_label = CTkLabel(main_frame, text="Stellar Explorers", text_color= "Black", font=title_font)
+    title_label.place(relx=0.5, rely=0.13, anchor="center")
+    start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=35) 
+    start_btn.pack(pady=200)    
+    options_btn = CTkButton(main_frame, text = "Options", command=options_view, width=200, height=35)
+    options_btn.place(relx=0.5, rely=0.45, anchor="center") 
+    quiz_btn = CTkButton(main_frame, text= "Quiz", command=quiz_view, width=200, height=35)
+    quiz_btn.place(relx=0.5, rely=0.59, anchor="center")
 
 
 root.mainloop()
