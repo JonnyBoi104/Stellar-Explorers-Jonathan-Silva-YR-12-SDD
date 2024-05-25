@@ -140,10 +140,50 @@ def open_neptune():
 
 #-------------------------------------------------------------------------------------------------#
 
+#FUNCTION FOR PLANET BACK TO ORBIT FRAME------------------ 
+def sun_to_orbit(): 
+    sun_view_frame.pack_forget() 
+    orbit_view() 
+
+def mercury_to_orbit(): 
+    mercury_view_frame.pack_forget() 
+    orbit_view()
+
+def venus_to_orbit(): 
+    venus_view_frame.pack_forget() 
+    orbit_view() 
+
+def earth_to_orbit(): 
+    earth_view_frame.pack_forget() 
+    orbit_view()
+
+def mars_to_orbit(): 
+    mars_view_frame.pack_forget() 
+    orbit_view()
+
+def astbelt_to_orbit(): 
+    astbelt_view_frame.pack_forget() 
+    orbit_view() 
+
+def jupiter_to_orbit(): 
+    jupiter_view_frame.pack_forget() 
+    orbit_view() 
+
+def saturn_to_orbit(): 
+    saturn_view_frame.pack_forget() 
+    orbit_view()
+
+def uranus_to_orbit(): 
+    uranus_view_frame.pack_forget() 
+    orbit_view() 
+
+def neptune_to_orbit(): 
+    neptune_view_frame.pack_forget() 
+    orbit_view()
+#-------------------------------- 
 
 
-
-#PLANets 
+#PLANets--------------------------------------------------------------
 def sun():  
     global sun_view_frame 
     sun_view_frame = CTkFrame(root) 
@@ -160,7 +200,9 @@ def sun():
     next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_mercury) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
     back_btn = CTkButton(sun_view_frame, text="Back", width=50, command=back_to_sequential_view)
-    back_btn.place(relx=0.09, rely=0.1, anchor="center")
+    back_btn.place(relx=0.09, rely=0.1, anchor="center") 
+    orbit_btn = CTkButton(sun_view_frame, text="To Orbit", width=100, command=sun_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")  
 
 def mercury():  
     global mercury_view_frame 
@@ -178,7 +220,9 @@ def mercury():
     back_btn = CTkButton(mercury_view_frame, text="Back", width=50, command=back_to_sun)
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(mercury_view_frame, text="Next", width=50, command=next_to_venus) 
-    next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+    orbit_btn = CTkButton(mercury_view_frame, text="To Orbit", width=100, command=mercury_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
 def venus():  
     global venus_view_frame 
@@ -196,7 +240,9 @@ def venus():
     back_btn = CTkButton(venus_view_frame, text="Back", width=50, command=back_to_mercury)
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(venus_view_frame, text="Next", width=50, command=next_to_earth) 
-    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")   
+    orbit_btn = CTkButton(venus_view_frame, text="To Orbit", width=100, command=venus_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
 def earth():  
     global earth_view_frame 
@@ -215,6 +261,8 @@ def earth():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(earth_view_frame, text="Next", width=50, command=next_to_mars) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+    orbit_btn = CTkButton(earth_view_frame, text="To Orbit", width=100, command=earth_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center") 
 
 def mars():  
     global mars_view_frame 
@@ -233,6 +281,8 @@ def mars():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(mars_view_frame, text="Next", width=50, command=next_to_astbelt) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+    orbit_btn = CTkButton(mars_view_frame, text="To Orbit", width=100, command=mars_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
 def astbelt():  
     global astbelt_view_frame 
@@ -251,6 +301,9 @@ def astbelt():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(astbelt_view_frame, text="Next", width=50, command=next_to_jupiter) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+    orbit_btn = CTkButton(astbelt_view_frame, text="To Orbit", width=100, command=astbelt_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+
 
 def jupiter():  
     global jupiter_view_frame 
@@ -269,6 +322,8 @@ def jupiter():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(jupiter_view_frame, text="Next", width=50, command=next_to_saturn) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+    orbit_btn = CTkButton(jupiter_view_frame, text="To Orbit", width=100, command=jupiter_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
 def saturn():  
     global saturn_view_frame 
@@ -286,7 +341,9 @@ def saturn():
     back_btn = CTkButton(saturn_view_frame, text="Back", width=50, command=back_to_jupiter)
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(saturn_view_frame, text="Next", width=50, command=next_to_uranus) 
-    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")   
+    orbit_btn = CTkButton(saturn_view_frame, text="To Orbit", width=100, command=saturn_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
 def uranus():  
     global uranus_view_frame 
@@ -305,6 +362,8 @@ def uranus():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(uranus_view_frame, text="Next", width=50, command=next_to_neptune) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center") 
+    orbit_btn = CTkButton(uranus_view_frame, text="To Orbit", width=100, command=uranus_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
 def neptune():  
     global neptune_view_frame 
@@ -322,7 +381,9 @@ def neptune():
     back_btn = CTkButton(neptune_view_frame, text="Back", width=50, command=back_to_uranus)
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(neptune_view_frame, text="Next", width=50, command=finish) 
-    next_btn.place(relx=0.91, rely=0.1, anchor="center")  
+    next_btn.place(relx=0.91, rely=0.1, anchor="center")   
+    orbit_btn = CTkButton(neptune_view_frame, text="To Orbit", width=100, command=neptune_to_orbit)
+    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
 #Next Buttons-------------------------------------------------------------------------------------#
 
@@ -374,7 +435,7 @@ def select_view():
     select_view_label = CTkLabel(select_view_frame, text="Would You like to view?", text_color= "Black", font=title_font)
     select_view_label.place(relx=0.5, rely=0.13, anchor="center")
 
-    sequential_order_btn = CTkButton(select_view_frame, text="Sequential Order (The Sun)", width=100, height=80, command=sequential_view) 
+    sequential_order_btn = CTkButton(select_view_frame, text="Sequentially View (The Sun)", width=100, height=80, command=sequential_view) 
     sequential_order_btn.place(relx=0.25, rely=0.275) 
     orbit_view_btn = CTkButton(select_view_frame, text="Orbit View (Pick Any)", width=150, height=80, command=orbit_view) 
     orbit_view_btn.place(relx=0.6, rely=0.275) 
@@ -486,6 +547,7 @@ def main_menu_2(): #Main menu from neptune
     start_btn.pack(pady=200)    
     options_btn = CTkButton(main_frame, text = "Options", command=options_view, width=200, height=35)
     options_btn.place(relx=0.5, rely=0.45, anchor="center") 
+
 #root = Tk() 
 root = CTk() 
 root.title('STELLAR EXPLORERS - Jonathan Silva')  
@@ -509,10 +571,5 @@ root.mainloop()
 
 
 
-
-
-
-
-#add button that brings user back to orbit view 
 #add pictures 
 #ACCESSIBILITY SETTINGS
