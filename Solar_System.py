@@ -1,4 +1,5 @@
 import tkinter as tk
+import customtkinter as ctk
 from os import path
 from customtkinter import *
 from PIL import Image  
@@ -9,25 +10,100 @@ main_path = path.dirname(path.abspath(__file__))
 assets_path = path.join(main_path, "assets")
 
 #Images-------------------------------------------------------
-orbit_path = path.join(assets_path, "orbit.jpg")
-orbit_image = Image.open(orbit_path)
+orbit_path = path.join(assets_path, "orbit.jpg") #image for orbit view
+orbit_image = Image.open(orbit_path) 
 
-sun_path = path.join(assets_path, "443.jpg") 
-sun_image = Image.open(sun_path)
+menu_path = path.join(assets_path, "title.jpg") #Main Menu image
+menu_image = Image.open(menu_path)
+
+sun_path = path.join(assets_path, "sun.jpg") 
+sun_image = Image.open(sun_path) 
+
+mercury_path = path.join(assets_path, "mercury.jpg") 
+mercury_image = Image.open(mercury_path) 
+
+venus_path = path.join(assets_path, "venus.jpg") 
+venus_image = Image.open(venus_path) 
+
+earth_path = path.join(assets_path, "earth.jpg") 
+earth_image = Image.open(earth_path) 
+
+mars_path = path.join(assets_path, "mars.png") 
+mars_image = Image.open(mars_path) 
+
+astbelt_path = path.join(assets_path, "asteroidbelt.jpg") 
+astbelt_image = Image.open(astbelt_path)
+
+jupiter_path = path.join(assets_path, "jupiter.png") 
+jupiter_image = Image.open(jupiter_path)   
+
+saturn_path = path.join(assets_path, "saturn.jpg") 
+saturn_image = Image.open(saturn_path)    
+
+uranus_path = path.join(assets_path, "uranus.jpg") 
+uranus_image = Image.open(uranus_path)    
+
+neptune_path = path.join(assets_path, "neptune-planet-space-5568916.webp") 
+neptune_image = Image.open(neptune_path)
 
 #-------------------------------------------------------------------
 
+
+
+
+# Variables for theme, zoom, and font style
+current_theme = "dark"
+font_size = 20
+font_family = "Helvetica"
+
+font_style = ("Cambria", 35)
+
+def set_theme(theme):
+    global current_theme
+    current_theme = theme
+    set_appearance_mode(theme)
+    update_fonts()
+
+def set_zoom(zoom):
+    global font_size
+    font_size = int(zoom)
+    update_fonts()
+
+def set_font_style(font):
+    global font_family
+    font_family = font
+    update_fonts()
+
+def update_fonts():
+    global title_font, text_font
+    title_font = (font_family, font_size + 10)
+    text_font = (font_family, font_size)
+
+    # Update all widgets in the root window
+    update_widget_font(root)
+
+def update_widget_font(widget):
+    if isinstance(widget, (CTkScrollableFrame, CTkFrame)):
+        for child in widget.winfo_children():
+            update_widget_font(child)
+    elif isinstance(widget, CTkLabel):
+        widget.configure(font=text_font)
+
+# Main menu
 def main_menu():  
     global main_frame
     main_frame = CTkFrame(root)
-    main_frame.pack(expand=True, fill=BOTH)
-    title_label = CTkLabel(main_frame, text="Stellar Explorers", text_color= "Black", font=title_font)
-    title_label.place(relx=0.5, rely=0.13, anchor="center")
-    start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=35) 
-    start_btn.pack(pady=200)
-    options_btn = CTkButton(main_frame, text = "Options", command=options_view, width=200, height=35)   
-    options_btn.place(relx=0.5, rely=0.45, anchor="center") 
+    main_frame.pack(expand=True, fill=BOTH) 
+    root.config(menu="") 
 
+    menu_background = CTkLabel(main_frame, text="", image=CTkImage(menu_image, size=(1000, 700)))
+    menu_background.place(relx=0.5, rely=0.5, anchor="c")
+
+    title_label = CTkLabel(main_frame, text="Stellar Explorers", font=font_style, bg_color="transparent")
+    title_label.place(relx=0.5, rely=0.13, anchor="center") 
+
+    start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=50) 
+    start_btn.pack(pady=200)
 
 #--------------------------------------------------------------
 
@@ -35,18 +111,11 @@ def main_menu():
 set_appearance_mode("dark")
 set_default_color_theme("blue")
 
-
-
 #Back Buttons ----------------------------------------------------------------------------------#
 
 def back_to_main_menu(): #Select view back button
     select_view_frame.pack_forget() 
     main_frame.pack(expand=True, fill=BOTH) 
-
-def back_to_main_menu_2(): #options back button
-    options_view_frame.pack_forget() 
-    main_frame.pack(expand=True, fill=BOTH) 
-
 
 def back_to_sequential_view(): #sun back button
     sun_view_frame.pack_forget()
@@ -182,14 +251,16 @@ def neptune_to_orbit():
     orbit_view()
 #-------------------------------- 
 
-
 #PLANets--------------------------------------------------------------
 def sun():  
     global sun_view_frame 
     sun_view_frame = CTkFrame(root) 
     sun_view_frame.pack(expand=True, fill=BOTH) 
 
-    sun_title_label = CTkLabel(sun_view_frame, text="SUN", text_color= "Black", font=title_font)
+    sun_background = CTkLabel(sun_view_frame, text="", image=CTkImage(sun_image, size=(900, 650)))
+    sun_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    sun_title_label = CTkLabel(sun_view_frame, text="SUN", font=title_font)
     sun_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     sun_text = CTkScrollableFrame(sun_view_frame, width=400, height=550) 
     sun_text.place(relx=0.55, rely=0.165) 
@@ -207,9 +278,12 @@ def sun():
 def mercury():  
     global mercury_view_frame 
     mercury_view_frame = CTkFrame(root) 
-    mercury_view_frame.pack(expand=True, fill=BOTH) 
+    mercury_view_frame.pack(expand=True, fill=BOTH)  
 
-    mercury_title_label = CTkLabel(mercury_view_frame, text="MERCURY", text_color= "Black", font=title_font)
+    mercury_background = CTkLabel(mercury_view_frame, text="", image=CTkImage(mercury_image, size=(900, 650)))
+    mercury_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    mercury_title_label = CTkLabel(mercury_view_frame, text="MERCURY", font=title_font)
     mercury_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     mercury_text = CTkScrollableFrame(mercury_view_frame, width=400, height=550) 
     mercury_text.place(relx=0.55, rely=0.165) 
@@ -227,9 +301,12 @@ def mercury():
 def venus():  
     global venus_view_frame 
     venus_view_frame = CTkFrame(root) 
-    venus_view_frame.pack(expand=True, fill=BOTH) 
+    venus_view_frame.pack(expand=True, fill=BOTH)  
 
-    venus_title_label = CTkLabel(venus_view_frame, text="VENUS", text_color= "Black", font=title_font)
+    venus_background = CTkLabel(venus_view_frame, text="", image=CTkImage(venus_image, size=(900, 650)))
+    venus_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    venus_title_label = CTkLabel(venus_view_frame, text="VENUS", font=title_font)
     venus_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     venus_text = CTkScrollableFrame(venus_view_frame, width=400, height=550) 
     venus_text.place(relx=0.55, rely=0.165) 
@@ -247,9 +324,12 @@ def venus():
 def earth():  
     global earth_view_frame 
     earth_view_frame = CTkFrame(root) 
-    earth_view_frame.pack(expand=True, fill=BOTH) 
+    earth_view_frame.pack(expand=True, fill=BOTH)  
 
-    earth_title_label = CTkLabel(earth_view_frame, text="EARTH", text_color= "Black", font=title_font)
+    earth_background = CTkLabel(earth_view_frame, text="", image=CTkImage(earth_image, size=(900, 650)))
+    earth_background.place(relx=0.5, rely=0.5, anchor="c")
+
+    earth_title_label = CTkLabel(earth_view_frame, text="EARTH", font=title_font)
     earth_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     earth_text = CTkScrollableFrame(earth_view_frame, width=400, height=550) 
     earth_text.place(relx=0.55, rely=0.165) 
@@ -267,9 +347,12 @@ def earth():
 def mars():  
     global mars_view_frame 
     mars_view_frame = CTkFrame(root) 
-    mars_view_frame.pack(expand=True, fill=BOTH) 
+    mars_view_frame.pack(expand=True, fill=BOTH)  
 
-    mars_title_label = CTkLabel(mars_view_frame, text="MARS", text_color= "Black", font=title_font)
+    mars_background = CTkLabel(mars_view_frame, text="", image=CTkImage(mars_image, size=(900, 650)))
+    mars_background.place(relx=0.5, rely=0.5, anchor="c")
+
+    mars_title_label = CTkLabel(mars_view_frame, text="MARS", font=title_font)
     mars_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     mars_text = CTkScrollableFrame(mars_view_frame, width=400, height=550) 
     mars_text.place(relx=0.55, rely=0.165) 
@@ -287,9 +370,12 @@ def mars():
 def astbelt():  
     global astbelt_view_frame 
     astbelt_view_frame = CTkFrame(root) 
-    astbelt_view_frame.pack(expand=True, fill=BOTH) 
+    astbelt_view_frame.pack(expand=True, fill=BOTH)  
 
-    astbelt_title_label = CTkLabel(astbelt_view_frame, text="ASTEROID BELT", text_color= "Black", font=title_font)
+    astbelt_background = CTkLabel(astbelt_view_frame, text="", image=CTkImage(astbelt_image, size=(900, 650)))
+    astbelt_background.place(relx=0.5, rely=0.5, anchor="c")
+
+    astbelt_title_label = CTkLabel(astbelt_view_frame, text="ASTEROID BELT", font=title_font)
     astbelt_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     astbelt_text = CTkScrollableFrame(astbelt_view_frame, width=400, height=550) 
     astbelt_text.place(relx=0.55, rely=0.165) 
@@ -304,13 +390,15 @@ def astbelt():
     orbit_btn = CTkButton(astbelt_view_frame, text="To Orbit", width=100, command=astbelt_to_orbit)
     orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
 
-
 def jupiter():  
     global jupiter_view_frame 
     jupiter_view_frame = CTkFrame(root) 
     jupiter_view_frame.pack(expand=True, fill=BOTH) 
 
-    jupiter_title_label = CTkLabel(jupiter_view_frame, text="JUPITER", text_color= "Black", font=title_font)
+    jupiter_background = CTkLabel(jupiter_view_frame, text="", image=CTkImage(jupiter_image, size=(900, 650)))
+    jupiter_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    jupiter_title_label = CTkLabel(jupiter_view_frame, text="JUPITER", font=title_font)
     jupiter_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     jupiter_text = CTkScrollableFrame(jupiter_view_frame, width=400, height=550) 
     jupiter_text.place(relx=0.55, rely=0.165) 
@@ -328,9 +416,12 @@ def jupiter():
 def saturn():  
     global saturn_view_frame 
     saturn_view_frame = CTkFrame(root) 
-    saturn_view_frame.pack(expand=True, fill=BOTH) 
+    saturn_view_frame.pack(expand=True, fill=BOTH)  
 
-    saturn_title_label = CTkLabel(saturn_view_frame, text="SATURN", text_color= "Black", font=title_font)
+    saturn_background = CTkLabel(saturn_view_frame, text="", image=CTkImage(saturn_image, size=(900, 650)))
+    saturn_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    saturn_title_label = CTkLabel(saturn_view_frame, text="SATURN", font=title_font)
     saturn_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     saturn_text = CTkScrollableFrame(saturn_view_frame, width=400, height=550) 
     saturn_text.place(relx=0.55, rely=0.165) 
@@ -348,9 +439,12 @@ def saturn():
 def uranus():  
     global uranus_view_frame 
     uranus_view_frame = CTkFrame(root) 
-    uranus_view_frame.pack(expand=True, fill=BOTH) 
+    uranus_view_frame.pack(expand=True, fill=BOTH)  
 
-    uranus_title_label = CTkLabel(uranus_view_frame, text="URANUS", text_color= "Black", font=title_font)
+    uranus_background = CTkLabel(uranus_view_frame, text="", image=CTkImage(uranus_image, size=(900, 650)))
+    uranus_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    uranus_title_label = CTkLabel(uranus_view_frame, text="URANUS", font=title_font)
     uranus_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     uranus_text = CTkScrollableFrame(uranus_view_frame, width=400, height=550) 
     uranus_text.place(relx=0.55, rely=0.165) 
@@ -368,9 +462,12 @@ def uranus():
 def neptune():  
     global neptune_view_frame 
     neptune_view_frame = CTkFrame(root) 
-    neptune_view_frame.pack(expand=True, fill=BOTH) 
+    neptune_view_frame.pack(expand=True, fill=BOTH)  
 
-    neptune_title_label = CTkLabel(neptune_view_frame, text="NEPTUNE", text_color= "Black", font=title_font)
+    neptune_background = CTkLabel(neptune_view_frame, text="", image=CTkImage(neptune_image, size=(900, 650)))
+    neptune_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    neptune_title_label = CTkLabel(neptune_view_frame, text="NEPTUNE", font=title_font)
     neptune_title_label.place(relx=0.5, rely=0.1, anchor="center") 
     neptune_text = CTkScrollableFrame(neptune_view_frame, width=400, height=550) 
     neptune_text.place(relx=0.55, rely=0.165) 
@@ -427,26 +524,24 @@ def next_to_neptune():
 
 def select_view():
     main_frame.pack_forget()
-    main_frame.pack_forget()
     global select_view_frame
     select_view_frame = CTkFrame(root)
     select_view_frame.pack(expand=True, fill=BOTH)
 
-    select_view_label = CTkLabel(select_view_frame, text="Would You like to view?", text_color= "Black", font=title_font)
+    select_view_label = CTkLabel(select_view_frame, text="Would You like to view?", font=font_style)
     select_view_label.place(relx=0.5, rely=0.13, anchor="center")
 
     sequential_order_btn = CTkButton(select_view_frame, text="Sequentially View (The Sun)", width=100, height=80, command=sequential_view) 
     sequential_order_btn.place(relx=0.25, rely=0.275) 
     orbit_view_btn = CTkButton(select_view_frame, text="Orbit View (Pick Any)", width=150, height=80, command=orbit_view) 
     orbit_view_btn.place(relx=0.6, rely=0.275) 
-    back_btn = CTkButton(select_view_frame, text="Back", text_color="Black", width=50, command=back_to_main_menu)
+    back_btn = CTkButton(select_view_frame, text="Back", width=50, command=back_to_main_menu)
     back_btn.place(relx=0.09, rely=0.1, anchor="center") 
 
 def sequential_view(): 
     select_view_frame.pack_forget() 
     sun()
     
-
 def orbit_view():
     select_view_frame.pack_forget()  
 
@@ -456,9 +551,8 @@ def orbit_view():
 
     orbit_label = CTkLabel(orbit_view_frame, text="", image=CTkImage(orbit_image, size=(1000, 700)))
     orbit_label.place(relx=0.5, rely=0.5, anchor="c")
-    orbit_view_label = CTkLabel(orbit_view_frame, text="Where would you like to go?", text_color= "White", font=title_font)
+    orbit_view_label = CTkLabel(orbit_view_frame, text="Where would you like to go?", font=title_font)
     orbit_view_label.place(relx=0.5, rely=0.13, anchor="center") 
-
 
     sun_btn = CTkButton(orbit_view_frame, text="Sun", width=50, command=open_sun) 
     sun_btn.place(relx=0.475, rely=0.35) 
@@ -481,72 +575,31 @@ def orbit_view():
     neptune_btn = CTkButton(orbit_view_frame, text="Neptune", width=50, command=open_neptune) 
     neptune_btn.place(relx=0.085, rely=0.785)
 
-
     back_btn = CTkButton(orbit_view_frame, text="Back", text_color="White", width=50, command=back_to_sequential_view_2)
     back_btn.place(relx=0.09, rely=0.1, anchor="center") 
 
 #-----------------------------------------------------------------------------------------------------------------------------------#
 
-
 #Options Button onwards-------------------------------------------------------------------------------------------------------------#
 
-def options_view(): 
-    
-    main_frame.pack_forget()
 
-    global options_view_frame
-    options_view_frame = CTkFrame(root)
-    options_view_frame.pack(expand=True, fill=BOTH)
-
-    back_btn = CTkButton(options_view_frame, text="Back", text_color="Black", width=50, command=back_to_main_menu_2)
-    back_btn.place(relx=0.09, rely=0.1, anchor="center") 
-
-#Themes
-    theme_label = CTkLabel(options_view_frame, text="Themes", text_color="black", font=theme_font) 
-    theme_label.place(relx=0.2, rely=0.225) 
-    themes = ["Dark Blue", "Blue", "Green", "Light", "System", "Dark"]
-    theme_combo = CTkComboBox(options_view_frame, values=themes, command=theme_select) 
-    theme_combo.place(relx=0.18, rely=0.3)
-
-#Zoom
-    zoom_label = CTkLabel(options_view_frame, text="Zoom", text_color="black", font=theme_font) 
-    zoom_label.place(relx=0.45, rely=0.225)  
-    zoom = ["Zoom In", "Zoom Out"] 
-    zoom_combo = CTkComboBox(options_view_frame, values=zoom, command=zoom_select)
-    zoom_combo.place(relx=0.424, rely=0.3)
-
-#Font
-    font_label = CTkLabel(options_view_frame, text="Font", text_color="black", font=theme_font) 
-    font_label.place(relx=0.7, rely=0.225)  
-    font = ["Arial", "Cambira", "Spectral"] 
-    font_combo = CTkComboBox(options_view_frame, values=font, command=zoom_select)
-    font_combo.place(relx=0.665, rely=0.3)
-
-def theme_select(choice): 
-    pass
-
-def zoom_select(choice): 
-    pass
-
- 
-
-
-
-   #Zoom
 #--------------------------------------------------------------------------------------------------------------------------------------#
 
-#Main Menu-  
+#Main Menu------------------------------------
 
 def main_menu_2(): #Main menu from neptune  
     neptune_view_frame.pack_forget()
     main_frame = CTkFrame(root)
     main_frame.pack(expand=True, fill=BOTH)
-    title_label = CTkLabel(main_frame, text="Stellar Explorers", text_color= "Black", font=title_font)
-    title_label.place(relx=0.5, rely=0.13, anchor="center")
+    title_label = CTkLabel(main_frame, text="Stellar Explorers", text_color= "Gray", font=title_font)
+    title_label.place(relx=0.5, rely=0.13, anchor="center") 
+
+    menu_background = CTkLabel(main_frame, text="", image=CTkImage(menu_image, size=(1000, 700)))
+    menu_background.place(relx=0.5, rely=0.5, anchor="c")
+
     start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=35) 
     start_btn.pack(pady=200)    
-    options_btn = CTkButton(main_frame, text = "Options", command=options_view, width=200, height=35)
-    options_btn.place(relx=0.5, rely=0.45, anchor="center") 
+
 
 #root = Tk() 
 root = CTk() 
@@ -565,11 +618,84 @@ y = (screen_height / 2) - (app_height / 2)
 
 root.geometry(f'{app_width}x{app_height}+{int(x)}+{int(y)}')
 
-main_menu()
+set_appearance_mode(current_theme)
+update_fonts()
+main_menu()  
+
+
+#Menu bar functions--------------- 
+
+
+#Themes-------
+def light_theme():
+    current_mode = ctk.get_appearance_mode()
+    new_mode = "Light" if current_mode == "Dark" else "Dark"
+    ctk.set_appearance_mode(new_mode)
+
+def dark_theme(): 
+    current_mode = ctk.get_appearance_mode()
+    new_mode = "Dark" if current_mode == "Light" else "Dark"
+    ctk.set_appearance_mode(new_mode)
+
+def system_theme():
+    current_mode = ctk.get_appearance_mode()
+    new_mode = "System" if current_mode == "Dark" else "Dark"
+    ctk.set_appearance_mode(new_mode)
+
+#Zoom_---------- 
+def zoom_in(): 
+    pass 
+
+def zoom_out(): 
+    pass 
+
+#Font------------ 
+def change_font_style(new_font):
+    global current_font
+    current_font = new_font
+    root.configure(font=(current_font, 14))
+
+#Menu Bar------------------------------------
+menu_bar = tk.Menu(main_frame)  
+root.config(menu="")
+
+theme_menu = tk.Menu(menu_bar, tearoff=0)
+theme_menu.add_command(label="Light", command=light_theme)
+theme_menu.add_command(label="Dark", command=dark_theme)
+theme_menu.add_command(label="System", command=system_theme)
+theme_menu.add_separator()
+theme_menu.add_command(label="Exit", command=root.quit)
+menu_bar.add_cascade(label="Themes", menu=theme_menu)
+
+#Zoom=--------------------------
+zoom_menu = tk.Menu(menu_bar, tearoff=0)
+zoom_menu.add_command(label="Zoom In", command=zoom_in)
+zoom_menu.add_command(label="Zoom Out", command=zoom_out)
+menu_bar.add_cascade(label="Zoom", menu=zoom_menu)
+ 
+#--------------------------------------------
+
+# Create the 'Font' menu---------------------------------------- 
+fonts = ["Arial", "Times New Roman", "Courier New"]
+font_menu = tk.Menu(menu_bar, tearoff=0)
+
+# Define available fonts
+fonts = ["Arial", "Calibri", "Cousine", "Cambria", "Spectral", "Helvetica"]
+
+# Add font options to the 'Font' menu
+for font in fonts:
+    font_menu.add_command(label=font, command=lambda f=font: change_font_style(f))
+
+# Add the 'Font' menu to the menu bar
+menu_bar.add_cascade(label="Font", menu=font_menu)
+
+#Initialise current font size and font name 
+current_font_size=25
+current_font="Helvetica"
+
+# Attach the menu bar to the window
+root.config(menu=menu_bar)
+
+#-----------------------------------------------------------------------------
 
 root.mainloop() 
-
-
-
-#add pictures 
-#ACCESSIBILITY SETTINGS
