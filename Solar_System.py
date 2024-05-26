@@ -650,10 +650,17 @@ def zoom_out():
     pass 
 
 #Font------------ 
-def change_font_style(new_font):
-    global current_font
-    current_font = new_font
-    root.configure(font=(current_font, 14))
+def change_font_style():
+    global main_frame, select_view_frame, orbit_view_frame, sun_view_frame, mercury_view_frame, venus_view_frame, earth_view_frame, mars_view_frame, jupiter_view_frame, saturn_view_frame, uranus_view_frame, neptune_image
+    
+    
+
+def update_all_fonts(widget, font):
+    widget_type = widget.winfo_class()
+    if widget_type in ('CTkLabel', 'CTkButton', 'CTkEntry', 'CTkScrollableFrame'):
+        widget.configure(font=(font, 14))
+    for child in widget.winfo_children():
+        update_all_fonts(child, font)
 
 #Menu Bar------------------------------------
 menu_bar = tk.Menu(main_frame)  
@@ -675,12 +682,13 @@ menu_bar.add_cascade(label="Zoom", menu=zoom_menu)
  
 #--------------------------------------------
 
+
 # Create the 'Font' menu---------------------------------------- 
-fonts = ["Arial", "Times New Roman", "Courier New"]
+fonts = ["Arial", "Cambria", "Cousine", "Spectral", "Helvetica", "Calibri"]
 font_menu = tk.Menu(menu_bar, tearoff=0)
 
 # Define available fonts
-fonts = ["Arial", "Calibri", "Cousine", "Cambria", "Spectral", "Helvetica"]
+fonts = ["Arial", "Cambria", "Cousine", "Spectral", "Helvetica", "Calibri"]
 
 # Add font options to the 'Font' menu
 for font in fonts:
