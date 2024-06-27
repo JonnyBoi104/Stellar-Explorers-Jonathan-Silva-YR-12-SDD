@@ -7,7 +7,10 @@ from pathlib import Path
 from os import path  
 
 main_path = path.dirname(path.abspath(__file__))
-assets_path = path.join(main_path, "assets")
+assets_path = path.join(main_path, "assets") 
+
+#TEXT for each planet---------------------------------------- 
+sun_info = "The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma, with internal convective motion that generates a magnetic field via a dynamo process. It is by far the most important source of energy for life on Earth. Its diameter is about 1.39 million kilometers, and it accounts for about 99.86% of the total mass of the Solar System. The Sun's gravity holds the Solar System together, keeping everything from the biggest planets to the smallest particles of debris in its orbit. Solar energy is created deep within the core of the Sun, where the temperature is about 15 million degrees Celsius. This energy then radiates outward from the core and is emitted as sunlight and other forms of radiation." 
 
 #Images-------------------------------------------------------
 orbit_path = path.join(assets_path, "orbit.jpg") #image for orbit view
@@ -94,7 +97,7 @@ def main_menu():
     global main_frame
     main_frame = CTkFrame(root)
     main_frame.pack(expand=True, fill=BOTH) 
-    root.config(menu="") 
+
 
     menu_background = CTkLabel(main_frame, text="", image=CTkImage(menu_image, size=(1000, 700)))
     menu_background.place(relx=0.5, rely=0.5, anchor="c")
@@ -103,13 +106,18 @@ def main_menu():
     title_label.place(relx=0.5, rely=0.13, anchor="center") 
 
     start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=50) 
-    start_btn.pack(pady=200)
+    start_btn.pack(pady=200) 
+
+
 
 #--------------------------------------------------------------
 
+
+
 # set theme 
 set_appearance_mode("dark")
-set_default_color_theme("blue")
+set_default_color_theme("blue") 
+
 
 #Back Buttons ----------------------------------------------------------------------------------#
 
@@ -262,18 +270,20 @@ def sun():
 
     sun_title_label = CTkLabel(sun_view_frame, text="SUN", font=title_font)
     sun_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    sun_text = CTkScrollableFrame(sun_view_frame, width=400, height=550) 
-    sun_text.place(relx=0.55, rely=0.165) 
+    sun_text = CTkScrollableFrame(sun_view_frame, width=400, height=250) 
+    sun_text.place(relx=0.55, rely=0.545) 
 
-    sun_text_label = CTkLabel(sun_text, text="The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma, with internal convective motion that generates a magnetic field via a dynamo process. It is by far the most important source of energy for life on Earth. Its diameter is about 1.39 million kilometers, and it accounts for about 99.86% of the total mass of the Solar System. The Sun's gravity holds the Solar System together, keeping everything from the biggest planets to the smallest particles of debris in its orbit. Solar energy is created deep within the core of the Sun, where the temperature is about 15 million degrees Celsius. This energy then radiates outward from the core and is emitted as sunlight and other forms of radiation.", wraplength=380)
+    sun_text_label = CTkLabel(sun_text, text= sun_info, wraplength=380)
     sun_text_label.pack(padx=10, pady=10)
 
     next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_mercury) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
     back_btn = CTkButton(sun_view_frame, text="Back", width=50, command=back_to_sequential_view)
     back_btn.place(relx=0.09, rely=0.1, anchor="center") 
-    orbit_btn = CTkButton(sun_view_frame, text="To Orbit", width=100, command=sun_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")  
+    orbit_btn = CTkButton(sun_view_frame, text="To Orbit View", width=100, command=sun_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
+
+
 
 def mercury():  
     global mercury_view_frame 
@@ -285,8 +295,8 @@ def mercury():
 
     mercury_title_label = CTkLabel(mercury_view_frame, text="MERCURY", font=title_font)
     mercury_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    mercury_text = CTkScrollableFrame(mercury_view_frame, width=400, height=550) 
-    mercury_text.place(relx=0.55, rely=0.165) 
+    mercury_text = CTkScrollableFrame(mercury_view_frame, width=400, height=250)
+    mercury_text.place(relx=0.55, rely=0.545)
 
     mercury_text_label = CTkLabel(mercury_text, text="Mercury is the closest planet to the Sun and the smallest planet in the solar system. It has a rocky body like Earth but is only about 38% of Earth's diameter. Mercury orbits the Sun every 88 days and has a very thin atmosphere, meaning it cannot retain heat and has extreme temperature fluctuations. Its surface is heavily cratered and similar in appearance to the Moon. Despite its proximity to the Sun, Mercury is not the hottest planet in the solar system; that title belongs to Venus. The lack of a significant atmosphere also means Mercury cannot support life as we know it. The planet has a large iron core that generates a magnetic field, albeit one that is only about 1% as strong as Earth's.", wraplength=380)
     mercury_text_label.pack(padx=10, pady=10)
@@ -295,8 +305,8 @@ def mercury():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(mercury_view_frame, text="Next", width=50, command=next_to_venus) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
-    orbit_btn = CTkButton(mercury_view_frame, text="To Orbit", width=100, command=mercury_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(mercury_view_frame, text="To Orbit View", width=100, command=mercury_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def venus():  
     global venus_view_frame 
@@ -308,8 +318,8 @@ def venus():
 
     venus_title_label = CTkLabel(venus_view_frame, text="VENUS", font=title_font)
     venus_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    venus_text = CTkScrollableFrame(venus_view_frame, width=400, height=550) 
-    venus_text.place(relx=0.55, rely=0.165) 
+    venus_text = CTkScrollableFrame(venus_view_frame, width=400, height=250)
+    venus_text.place(relx=0.55, rely=0.545)
 
     venus_text_label = CTkLabel(venus_text, text="Venus is the second planet from the Sun and is similar in size and structure to Earth, earning it the title of Earth's twin. However, Venus has a thick, toxic atmosphere that traps heat, making it the hottest planet in the solar system with surface temperatures reaching 465 degrees Celsius. The atmosphere is composed mainly of carbon dioxide, with clouds of sulfuric acid, making the surface pressure 92 times that of Earth's. Venus has no moons and rotates very slowly on its axis, taking about 243 Earth days to complete one rotation. The planet's surface features numerous volcanoes, mountains, and large highland regions, with evidence suggesting that it is geologically active.", wraplength=380)
     venus_text_label.pack(padx=10, pady=10)
@@ -318,8 +328,8 @@ def venus():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(venus_view_frame, text="Next", width=50, command=next_to_earth) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")   
-    orbit_btn = CTkButton(venus_view_frame, text="To Orbit", width=100, command=venus_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(venus_view_frame, text="To Orbit View", width=100, command=venus_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def earth():  
     global earth_view_frame 
@@ -331,8 +341,8 @@ def earth():
 
     earth_title_label = CTkLabel(earth_view_frame, text="EARTH", font=title_font)
     earth_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    earth_text = CTkScrollableFrame(earth_view_frame, width=400, height=550) 
-    earth_text.place(relx=0.55, rely=0.165) 
+    earth_text = CTkScrollableFrame(earth_view_frame, width=400, height=250)
+    earth_text.place(relx=0.55, rely=0.545) 
 
     earth_text_label = CTkLabel(earth_text, text="Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 71% of Earth's surface is water-covered, and the atmosphere protects and supports life. Earth has a moderate climate, supported by its distance from the Sun, the presence of an atmosphere, and its magnetic field which shields it from harmful solar radiation. Earth is unique for its active plate tectonics and water cycle, which are essential in regulating the climate and enabling the diverse ecosystems found across the planet. Earth's atmosphere is composed of 78% nitrogen, 21% oxygen, and trace amounts of other gases, making it suitable for life as we know it.", wraplength=380)
     earth_text_label.pack(padx=10, pady=10)
@@ -341,8 +351,8 @@ def earth():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(earth_view_frame, text="Next", width=50, command=next_to_mars) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center") 
-    orbit_btn = CTkButton(earth_view_frame, text="To Orbit", width=100, command=earth_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center") 
+    orbit_btn = CTkButton(earth_view_frame, text="To Orbit View", width=100, command=earth_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def mars():  
     global mars_view_frame 
@@ -354,8 +364,8 @@ def mars():
 
     mars_title_label = CTkLabel(mars_view_frame, text="MARS", font=title_font)
     mars_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    mars_text = CTkScrollableFrame(mars_view_frame, width=400, height=550) 
-    mars_text.place(relx=0.55, rely=0.165) 
+    mars_text = CTkScrollableFrame(mars_view_frame, width=400, height=250)
+    mars_text.place(relx=0.55, rely=0.545)
 
     mars_text_label = CTkLabel(mars_text, text="Mars is the fourth planet from the Sun and the second smallest planet in the solar system. Known as the Red Planet due to its reddish appearance, which is caused by iron oxide on its surface. Mars has the largest volcano in the solar system, Olympus Mons, and the deepest canyon, Valles Marineris. The planet's thin atmosphere is composed mostly of carbon dioxide. Mars has seasons, polar ice caps, and signs of ancient floods, but present-day water is scarce. Recent missions have found evidence of liquid water in the form of briny streaks on its surface, increasing the possibility that life once existed there or could exist in the future.", wraplength=380)
     mars_text_label.pack(padx=10, pady=10)
@@ -364,8 +374,8 @@ def mars():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(mars_view_frame, text="Next", width=50, command=next_to_astbelt) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
-    orbit_btn = CTkButton(mars_view_frame, text="To Orbit", width=100, command=mars_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(mars_view_frame, text="To Orbit View", width=100, command=mars_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def astbelt():  
     global astbelt_view_frame 
@@ -377,8 +387,8 @@ def astbelt():
 
     astbelt_title_label = CTkLabel(astbelt_view_frame, text="ASTEROID BELT", font=title_font)
     astbelt_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    astbelt_text = CTkScrollableFrame(astbelt_view_frame, width=400, height=550) 
-    astbelt_text.place(relx=0.55, rely=0.165) 
+    astbelt_text = CTkScrollableFrame(astbelt_view_frame, width=400, height=250)
+    astbelt_text.place(relx=0.55, rely=0.545)
 
     astbelt_text_label = CTkLabel(astbelt_text, text="The Asteroid Belt is a region of the solar system located between the orbits of Mars and Jupiter. It contains a vast number of irregularly shaped bodies called asteroids or minor planets. The largest object in the asteroid belt is the dwarf planet Ceres, which comprises about a third of the belt's total mass. The asteroids are composed of rock and metal, and their sizes vary from tiny dust particles to objects that are hundreds of kilometers in diameter. The Asteroid Belt is thought to be remnants from the early solar system that never formed into a planet due to the gravitational influence of Jupiter. These bodies are of great interest to scientists as they provide clues about the conditions and processes that shaped our solar system.", wraplength=380)
     astbelt_text_label.pack(padx=10, pady=10)
@@ -387,8 +397,8 @@ def astbelt():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(astbelt_view_frame, text="Next", width=50, command=next_to_jupiter) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
-    orbit_btn = CTkButton(astbelt_view_frame, text="To Orbit", width=100, command=astbelt_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(astbelt_view_frame, text="To Orbit View", width=100, command=astbelt_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def jupiter():  
     global jupiter_view_frame 
@@ -400,8 +410,8 @@ def jupiter():
 
     jupiter_title_label = CTkLabel(jupiter_view_frame, text="JUPITER", font=title_font)
     jupiter_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    jupiter_text = CTkScrollableFrame(jupiter_view_frame, width=400, height=550) 
-    jupiter_text.place(relx=0.55, rely=0.165) 
+    jupiter_text = CTkScrollableFrame(jupiter_view_frame, width=400, height=250)
+    jupiter_text.place(relx=0.55, rely=0.545) 
 
     jupiter_text_label = CTkLabel(jupiter_text, text="Jupiter is the fifth planet from the Sun and the largest in the solar system. It is a gas giant with a mass one-thousandth that of the Sun but two and a half times that of all the other planets in the solar system combined. Jupiter is known for its prominent bands of clouds and its Great Red Spot, a giant storm that has persisted for at least 400 years. The planet has a strong magnetic field and at least 79 moons, including the four large Galilean moons: Io, Europa, Ganymede, and Callisto. These moons are of great interest due to their potential subsurface oceans and geological activity. Jupiter's atmosphere is primarily composed of hydrogen and helium, with traces of other gases.", wraplength=380)
     jupiter_text_label.pack(padx=10, pady=10)
@@ -410,8 +420,8 @@ def jupiter():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(jupiter_view_frame, text="Next", width=50, command=next_to_saturn) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")  
-    orbit_btn = CTkButton(jupiter_view_frame, text="To Orbit", width=100, command=jupiter_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(jupiter_view_frame, text="To Orbit View", width=100, command=jupiter_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def saturn():  
     global saturn_view_frame 
@@ -423,8 +433,8 @@ def saturn():
 
     saturn_title_label = CTkLabel(saturn_view_frame, text="SATURN", font=title_font)
     saturn_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    saturn_text = CTkScrollableFrame(saturn_view_frame, width=400, height=550) 
-    saturn_text.place(relx=0.55, rely=0.165) 
+    saturn_text = CTkScrollableFrame(saturn_view_frame, width=400, height=250)
+    saturn_text.place(relx=0.55, rely=0.545)
 
     saturn_text_label = CTkLabel(saturn_text, text="Saturn is the sixth planet from the Sun and the second largest in the solar system, renowned for its stunning ring system. The rings are composed of countless small particles of ice and rock, ranging in size from micrometers to meters, that orbit the planet. Saturn is a gas giant like Jupiter, with an atmosphere mostly made up of hydrogen and helium. It has at least 83 moons, with Titan being the largest. Titan is larger than the planet Mercury and has a thick atmosphere and liquid hydrocarbon lakes on its surface, making it one of the most Earth-like bodies in the solar system. Saturn's magnetic field is also substantial, though it is weaker than Jupiter's. The planet's unique and complex ring system has been studied extensively, offering insights into planetary ring dynamics and the conditions in the early solar system.", wraplength=380)
     saturn_text_label.pack(padx=10, pady=10)
@@ -433,8 +443,8 @@ def saturn():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(saturn_view_frame, text="Next", width=50, command=next_to_uranus) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")   
-    orbit_btn = CTkButton(saturn_view_frame, text="To Orbit", width=100, command=saturn_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(saturn_view_frame, text="To Orbit View", width=100, command=saturn_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def uranus():  
     global uranus_view_frame 
@@ -446,8 +456,8 @@ def uranus():
 
     uranus_title_label = CTkLabel(uranus_view_frame, text="URANUS", font=title_font)
     uranus_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    uranus_text = CTkScrollableFrame(uranus_view_frame, width=400, height=550) 
-    uranus_text.place(relx=0.55, rely=0.165) 
+    uranus_text = CTkScrollableFrame(uranus_view_frame, width=400, height=250)
+    uranus_text.place(relx=0.55, rely=0.545)
 
     uranus_text_label = CTkLabel(uranus_text, text="Uranus is the seventh planet from the Sun and is classified as an ice giant due to its composition. It has a unique blue-green color due to the presence of methane in its atmosphere. Uranus is tilted on its side, with an axial tilt of 98 degrees, making its rotation nearly parallel to the Sun. This unusual tilt causes extreme seasonal variations during its 84-year orbit. Uranus has 27 known moons and a faint ring system composed of dark, narrow rings. The planet's atmosphere is primarily hydrogen and helium, with trace amounts of water, ammonia, and methane. Uranus' cold and featureless appearance belies the complex and dynamic processes occurring in its atmosphere and interior.", wraplength=380)
     uranus_text_label.pack(padx=10, pady=10)
@@ -456,8 +466,8 @@ def uranus():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(uranus_view_frame, text="Next", width=50, command=next_to_neptune) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center") 
-    orbit_btn = CTkButton(uranus_view_frame, text="To Orbit", width=100, command=uranus_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(uranus_view_frame, text="To Orbit View", width=100, command=uranus_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def neptune():  
     global neptune_view_frame 
@@ -469,8 +479,8 @@ def neptune():
 
     neptune_title_label = CTkLabel(neptune_view_frame, text="NEPTUNE", font=title_font)
     neptune_title_label.place(relx=0.5, rely=0.1, anchor="center") 
-    neptune_text = CTkScrollableFrame(neptune_view_frame, width=400, height=550) 
-    neptune_text.place(relx=0.55, rely=0.165) 
+    neptune_text = CTkScrollableFrame(neptune_view_frame, width=400, height=250)
+    neptune_text.place(relx=0.55, rely=0.545)
 
     neptune_text_label = CTkLabel(neptune_text, text="Neptune is the eighth planet from the Sun and is similar in composition to Uranus. It is an ice giant with a deep blue color due to the presence of methane in its atmosphere. Neptune has the strongest winds in the solar system, with speeds reaching up to 2,100 kilometers per hour (1,300 miles per hour). It has 14 known moons, with Triton being the largest. Triton is geologically active, with geysers of liquid nitrogen, making it one of the most interesting moons in the solar system. Neptune's atmosphere is dynamic, with large storms and dark spots similar to Jupiter's Great Red Spot. The planet's internal heat contributes to its weather patterns and the turbulent conditions in its atmosphere.", wraplength=380)
     neptune_text_label.pack(padx=10, pady=10)
@@ -479,8 +489,8 @@ def neptune():
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
     next_btn = CTkButton(neptune_view_frame, text="Next", width=50, command=finish) 
     next_btn.place(relx=0.91, rely=0.1, anchor="center")   
-    orbit_btn = CTkButton(neptune_view_frame, text="To Orbit", width=100, command=neptune_to_orbit)
-    orbit_btn.place(relx=0.5, rely=0.95, anchor="center")
+    orbit_btn = CTkButton(neptune_view_frame, text="To Orbit View", width=100, command=neptune_to_orbit)
+    orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 #Next Buttons-------------------------------------------------------------------------------------#
 
@@ -528,7 +538,7 @@ def select_view():
     select_view_frame = CTkFrame(root)
     select_view_frame.pack(expand=True, fill=BOTH)
 
-    select_view_label = CTkLabel(select_view_frame, text="Would You like to view?", font=font_style)
+    select_view_label = CTkLabel(select_view_frame, text="What would You like to view?", font=font_style)
     select_view_label.place(relx=0.5, rely=0.13, anchor="center")
 
     sequential_order_btn = CTkButton(select_view_frame, text="Sequentially View (The Sun)", width=100, height=80, command=sequential_view) 
@@ -644,27 +654,21 @@ def system_theme():
 
 #Zoom_---------- 
 def zoom_in(): 
-    pass 
+    global current_font 
+    current_font += 1  
+    set_font_style(current_font)
+
 
 def zoom_out(): 
     pass 
 
 #Font------------ 
-def change_font_style():
-    global main_frame, select_view_frame, orbit_view_frame, sun_view_frame, mercury_view_frame, venus_view_frame, earth_view_frame, mars_view_frame, jupiter_view_frame, saturn_view_frame, uranus_view_frame, neptune_image
-    
-    
-
-def update_all_fonts(widget, font):
-    widget_type = widget.winfo_class()
-    if widget_type in ('CTkLabel', 'CTkButton', 'CTkEntry', 'CTkScrollableFrame'):
-        widget.configure(font=(font, 14))
-    for child in widget.winfo_children():
-        update_all_fonts(child, font)
-
+def change_font_style(): 
+    pass
+  
 #Menu Bar------------------------------------
 menu_bar = tk.Menu(main_frame)  
-root.config(menu="")
+
 
 theme_menu = tk.Menu(menu_bar, tearoff=0)
 theme_menu.add_command(label="Light", command=light_theme)
@@ -692,7 +696,7 @@ fonts = ["Arial", "Cambria", "Cousine", "Spectral", "Helvetica", "Calibri"]
 
 # Add font options to the 'Font' menu
 for font in fonts:
-    font_menu.add_command(label=font, command=lambda f=font: change_font_style(f))
+    font_menu.add_command(label=font, command=lambda f=font: change_font_style())
 
 # Add the 'Font' menu to the menu bar
 menu_bar.add_cascade(label="Font", menu=font_menu)
@@ -702,8 +706,19 @@ current_font_size=25
 current_font="Helvetica"
 
 # Attach the menu bar to the window
-root.config(menu=menu_bar)
+root.config(menu=menu_bar) 
+
+#=------------------------------------- 
+
+#Set font 
+current_font_size = 12 
+current_font = "Helvetica"
 
 #-----------------------------------------------------------------------------
 
-root.mainloop() 
+root.mainloop()  
+
+
+#fix menu bar disspearring after neptune -> main menu 
+#do accessibility settings 
+#add a hide button that hides the scrollable frame
