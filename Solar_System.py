@@ -235,7 +235,7 @@ def neptune_to_orbit():
 
 #PLANets--------------------------------------------------------------
 def sun():  
-    global sun_view_frame, sun_text_label
+    global sun_view_frame, sun_text_label, current_font_size
     sun_view_frame = CTkFrame(root) 
     sun_view_frame.pack(expand=True, fill=BOTH) 
 
@@ -636,21 +636,18 @@ def set_theme(theme):
     set_appearance_mode(theme)
     
 
-def set_zoom(): 
-    current_font_size = current_font_size +1
-    sun_text_label.configure(font = (current_font_size))
-    
-
 def set_font(new_font, current_font_size):  
     sun_text_label.configure(font = (new_font, current_font_size))
     
 
-def zoom_in(current_font, new_font_size): 
-    sun_text_label.configure(font = (current_font, new_font_size))
+def zoom_in(current_font, current_font_size):  
+    current_font_size = current_font_size +1
+    sun_text_label.configure(font = (current_font, current_font_size))
 
 
-def zoom_out(): 
-    pass 
+def zoom_out(current_font, current_font_size): 
+    current_font_size = current_font_size -1 
+    sun_text_label.configure(font = (current_font, current_font_size))
 
 #font functions  
 def arial(): 
@@ -687,7 +684,7 @@ menu_bar.add_cascade(label="Themes", menu=theme_menu)
 #Zoom=--------------------------
 zoom_menu = tk.Menu(menu_bar, tearoff=0)
 zoom_menu.add_command(label="Zoom In", command=lambda: zoom_in(current_font, current_font_size +1))
-zoom_menu.add_command(label="Zoom Out", command=zoom_out)
+zoom_menu.add_command(label="Zoom Out", command=lambda: zoom_in(current_font, current_font_size -1))
 menu_bar.add_cascade(label="Zoom", menu=zoom_menu)
  
 #--------------------------------------------
