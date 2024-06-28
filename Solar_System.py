@@ -461,8 +461,8 @@ def neptune():
 
     back_btn = CTkButton(neptune_view_frame, text="Back", width=50, command=back_to_uranus)
     back_btn.place(relx=0.09, rely=0.1, anchor="center")  
-    next_btn = CTkButton(neptune_view_frame, text="Next", width=50, command=finish) 
-    next_btn.place(relx=0.91, rely=0.1, anchor="center")   
+    finish_btn = CTkButton(neptune_view_frame, text="Finish", width=50, command=finish) 
+    finish_btn.place(relx=0.91, rely=0.1, anchor="center")   
     orbit_btn = CTkButton(neptune_view_frame, text="To Orbit View", width=100, command=neptune_to_orbit)
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
@@ -676,7 +676,7 @@ def zoom_out(current_font, current_font_size):
     saturn_text_label.configure(font = (current_font, current_font_size))
     uranus_text_label.configure(font = (current_font, current_font_size))
     neptune_text_label.configure(font = (current_font, current_font_size))
-    
+
   
 #Menu Bar------------------------------------
 menu_bar = tk.Menu(main_frame)  
