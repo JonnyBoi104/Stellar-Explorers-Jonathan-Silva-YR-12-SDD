@@ -260,7 +260,7 @@ def sun():
 
 
 def mercury():  
-    global mercury_view_frame 
+    global mercury_view_frame, mercury_text_label, current_font_size
     mercury_view_frame = CTkFrame(root) 
     mercury_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -272,7 +272,7 @@ def mercury():
     mercury_text = CTkScrollableFrame(mercury_view_frame, width=400, height=250)
     mercury_text.place(relx=0.55, rely=0.545)
 
-    mercury_text_label = CTkLabel(mercury_text, text="Mercury is the closest planet to the Sun and the smallest planet in the solar system. It has a rocky body like Earth but is only about 38% of Earth's diameter. Mercury orbits the Sun every 88 days and has a very thin atmosphere, meaning it cannot retain heat and has extreme temperature fluctuations. Its surface is heavily cratered and similar in appearance to the Moon. Despite its proximity to the Sun, Mercury is not the hottest planet in the solar system; that title belongs to Venus. The lack of a significant atmosphere also means Mercury cannot support life as we know it. The planet has a large iron core that generates a magnetic field, albeit one that is only about 1% as strong as Earth's.", wraplength=380)
+    mercury_text_label = CTkLabel(mercury_text, font = planet_font, text="Mercury is the closest planet to the Sun and the smallest planet in the solar system. It has a rocky body like Earth but is only about 38% of Earth's diameter. Mercury orbits the Sun every 88 days and has a very thin atmosphere, meaning it cannot retain heat and has extreme temperature fluctuations. Its surface is heavily cratered and similar in appearance to the Moon. Despite its proximity to the Sun, Mercury is not the hottest planet in the solar system; that title belongs to Venus. The lack of a significant atmosphere also means Mercury cannot support life as we know it. The planet has a large iron core that generates a magnetic field, albeit one that is only about 1% as strong as Earth's.", wraplength=380)
     mercury_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(mercury_view_frame, text="Back", width=50, command=back_to_sun)
@@ -283,7 +283,7 @@ def mercury():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def venus():  
-    global venus_view_frame 
+    global venus_view_frame, venus_text_label, current_font_size
     venus_view_frame = CTkFrame(root) 
     venus_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -295,7 +295,7 @@ def venus():
     venus_text = CTkScrollableFrame(venus_view_frame, width=400, height=250)
     venus_text.place(relx=0.55, rely=0.545)
 
-    venus_text_label = CTkLabel(venus_text, text="Venus is the second planet from the Sun and is similar in size and structure to Earth, earning it the title of Earth's twin. However, Venus has a thick, toxic atmosphere that traps heat, making it the hottest planet in the solar system with surface temperatures reaching 465 degrees Celsius. The atmosphere is composed mainly of carbon dioxide, with clouds of sulfuric acid, making the surface pressure 92 times that of Earth's. Venus has no moons and rotates very slowly on its axis, taking about 243 Earth days to complete one rotation. The planet's surface features numerous volcanoes, mountains, and large highland regions, with evidence suggesting that it is geologically active.", wraplength=380)
+    venus_text_label = CTkLabel(venus_text, font=planet_font, text="Venus is the second planet from the Sun and is similar in size and structure to Earth, earning it the title of Earth's twin. However, Venus has a thick, toxic atmosphere that traps heat, making it the hottest planet in the solar system with surface temperatures reaching 465 degrees Celsius. The atmosphere is composed mainly of carbon dioxide, with clouds of sulfuric acid, making the surface pressure 92 times that of Earth's. Venus has no moons and rotates very slowly on its axis, taking about 243 Earth days to complete one rotation. The planet's surface features numerous volcanoes, mountains, and large highland regions, with evidence suggesting that it is geologically active.", wraplength=380)
     venus_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(venus_view_frame, text="Back", width=50, command=back_to_mercury)
@@ -306,7 +306,7 @@ def venus():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def earth():  
-    global earth_view_frame 
+    global earth_view_frame, earth_text_label, current_font_size
     earth_view_frame = CTkFrame(root) 
     earth_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -318,7 +318,7 @@ def earth():
     earth_text = CTkScrollableFrame(earth_view_frame, width=400, height=250)
     earth_text.place(relx=0.55, rely=0.545) 
 
-    earth_text_label = CTkLabel(earth_text, text="Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 71% of Earth's surface is water-covered, and the atmosphere protects and supports life. Earth has a moderate climate, supported by its distance from the Sun, the presence of an atmosphere, and its magnetic field which shields it from harmful solar radiation. Earth is unique for its active plate tectonics and water cycle, which are essential in regulating the climate and enabling the diverse ecosystems found across the planet. Earth's atmosphere is composed of 78% nitrogen, 21% oxygen, and trace amounts of other gases, making it suitable for life as we know it.", wraplength=380)
+    earth_text_label = CTkLabel(earth_text, font=planet_font, text="Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 71% of Earth's surface is water-covered, and the atmosphere protects and supports life. Earth has a moderate climate, supported by its distance from the Sun, the presence of an atmosphere, and its magnetic field which shields it from harmful solar radiation. Earth is unique for its active plate tectonics and water cycle, which are essential in regulating the climate and enabling the diverse ecosystems found across the planet. Earth's atmosphere is composed of 78% nitrogen, 21% oxygen, and trace amounts of other gases, making it suitable for life as we know it.", wraplength=380)
     earth_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(earth_view_frame, text="Back", width=50, command=back_to_venus)
@@ -329,7 +329,7 @@ def earth():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def mars():  
-    global mars_view_frame 
+    global mars_view_frame, mars_text_label, current_font_size
     mars_view_frame = CTkFrame(root) 
     mars_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -341,7 +341,7 @@ def mars():
     mars_text = CTkScrollableFrame(mars_view_frame, width=400, height=250)
     mars_text.place(relx=0.55, rely=0.545)
 
-    mars_text_label = CTkLabel(mars_text, text="Mars is the fourth planet from the Sun and the second smallest planet in the solar system. Known as the Red Planet due to its reddish appearance, which is caused by iron oxide on its surface. Mars has the largest volcano in the solar system, Olympus Mons, and the deepest canyon, Valles Marineris. The planet's thin atmosphere is composed mostly of carbon dioxide. Mars has seasons, polar ice caps, and signs of ancient floods, but present-day water is scarce. Recent missions have found evidence of liquid water in the form of briny streaks on its surface, increasing the possibility that life once existed there or could exist in the future.", wraplength=380)
+    mars_text_label = CTkLabel(mars_text, font=planet_font, text="Mars is the fourth planet from the Sun and the second smallest planet in the solar system. Known as the Red Planet due to its reddish appearance, which is caused by iron oxide on its surface. Mars has the largest volcano in the solar system, Olympus Mons, and the deepest canyon, Valles Marineris. The planet's thin atmosphere is composed mostly of carbon dioxide. Mars has seasons, polar ice caps, and signs of ancient floods, but present-day water is scarce. Recent missions have found evidence of liquid water in the form of briny streaks on its surface, increasing the possibility that life once existed there or could exist in the future.", wraplength=380)
     mars_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(mars_view_frame, text="Back", width=50, command=back_to_earth)
@@ -352,7 +352,7 @@ def mars():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def astbelt():  
-    global astbelt_view_frame 
+    global astbelt_view_frame, astbelt_text_label, current_font_size
     astbelt_view_frame = CTkFrame(root) 
     astbelt_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -364,7 +364,7 @@ def astbelt():
     astbelt_text = CTkScrollableFrame(astbelt_view_frame, width=400, height=250)
     astbelt_text.place(relx=0.55, rely=0.545)
 
-    astbelt_text_label = CTkLabel(astbelt_text, text="The Asteroid Belt is a region of the solar system located between the orbits of Mars and Jupiter. It contains a vast number of irregularly shaped bodies called asteroids or minor planets. The largest object in the asteroid belt is the dwarf planet Ceres, which comprises about a third of the belt's total mass. The asteroids are composed of rock and metal, and their sizes vary from tiny dust particles to objects that are hundreds of kilometers in diameter. The Asteroid Belt is thought to be remnants from the early solar system that never formed into a planet due to the gravitational influence of Jupiter. These bodies are of great interest to scientists as they provide clues about the conditions and processes that shaped our solar system.", wraplength=380)
+    astbelt_text_label = CTkLabel(astbelt_text, font=planet_font, text="The Asteroid Belt is a region of the solar system located between the orbits of Mars and Jupiter. It contains a vast number of irregularly shaped bodies called asteroids or minor planets. The largest object in the asteroid belt is the dwarf planet Ceres, which comprises about a third of the belt's total mass. The asteroids are composed of rock and metal, and their sizes vary from tiny dust particles to objects that are hundreds of kilometers in diameter. The Asteroid Belt is thought to be remnants from the early solar system that never formed into a planet due to the gravitational influence of Jupiter. These bodies are of great interest to scientists as they provide clues about the conditions and processes that shaped our solar system.", wraplength=380)
     astbelt_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(astbelt_view_frame, text="Back", width=50, command=back_to_mars)
@@ -375,7 +375,7 @@ def astbelt():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def jupiter():  
-    global jupiter_view_frame 
+    global jupiter_view_frame, jupiter_text_label, current_font_size
     jupiter_view_frame = CTkFrame(root) 
     jupiter_view_frame.pack(expand=True, fill=BOTH) 
 
@@ -387,7 +387,7 @@ def jupiter():
     jupiter_text = CTkScrollableFrame(jupiter_view_frame, width=400, height=250)
     jupiter_text.place(relx=0.55, rely=0.545) 
 
-    jupiter_text_label = CTkLabel(jupiter_text, text="Jupiter is the fifth planet from the Sun and the largest in the solar system. It is a gas giant with a mass one-thousandth that of the Sun but two and a half times that of all the other planets in the solar system combined. Jupiter is known for its prominent bands of clouds and its Great Red Spot, a giant storm that has persisted for at least 400 years. The planet has a strong magnetic field and at least 79 moons, including the four large Galilean moons: Io, Europa, Ganymede, and Callisto. These moons are of great interest due to their potential subsurface oceans and geological activity. Jupiter's atmosphere is primarily composed of hydrogen and helium, with traces of other gases.", wraplength=380)
+    jupiter_text_label = CTkLabel(jupiter_text, font=planet_font, text="Jupiter is the fifth planet from the Sun and the largest in the solar system. It is a gas giant with a mass one-thousandth that of the Sun but two and a half times that of all the other planets in the solar system combined. Jupiter is known for its prominent bands of clouds and its Great Red Spot, a giant storm that has persisted for at least 400 years. The planet has a strong magnetic field and at least 79 moons, including the four large Galilean moons: Io, Europa, Ganymede, and Callisto. These moons are of great interest due to their potential subsurface oceans and geological activity. Jupiter's atmosphere is primarily composed of hydrogen and helium, with traces of other gases.", wraplength=380)
     jupiter_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(jupiter_view_frame, text="Back", width=50, command=back_to_astbelt)
@@ -398,7 +398,7 @@ def jupiter():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def saturn():  
-    global saturn_view_frame 
+    global saturn_view_frame, saturn_text_label, current_font_size
     saturn_view_frame = CTkFrame(root) 
     saturn_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -410,7 +410,7 @@ def saturn():
     saturn_text = CTkScrollableFrame(saturn_view_frame, width=400, height=250)
     saturn_text.place(relx=0.55, rely=0.545)
 
-    saturn_text_label = CTkLabel(saturn_text, text="Saturn is the sixth planet from the Sun and the second largest in the solar system, renowned for its stunning ring system. The rings are composed of countless small particles of ice and rock, ranging in size from micrometers to meters, that orbit the planet. Saturn is a gas giant like Jupiter, with an atmosphere mostly made up of hydrogen and helium. It has at least 83 moons, with Titan being the largest. Titan is larger than the planet Mercury and has a thick atmosphere and liquid hydrocarbon lakes on its surface, making it one of the most Earth-like bodies in the solar system. Saturn's magnetic field is also substantial, though it is weaker than Jupiter's. The planet's unique and complex ring system has been studied extensively, offering insights into planetary ring dynamics and the conditions in the early solar system.", wraplength=380)
+    saturn_text_label = CTkLabel(saturn_text, font=planet_font, text="Saturn is the sixth planet from the Sun and the second largest in the solar system, renowned for its stunning ring system. The rings are composed of countless small particles of ice and rock, ranging in size from micrometers to meters, that orbit the planet. Saturn is a gas giant like Jupiter, with an atmosphere mostly made up of hydrogen and helium. It has at least 83 moons, with Titan being the largest. Titan is larger than the planet Mercury and has a thick atmosphere and liquid hydrocarbon lakes on its surface, making it one of the most Earth-like bodies in the solar system. Saturn's magnetic field is also substantial, though it is weaker than Jupiter's. The planet's unique and complex ring system has been studied extensively, offering insights into planetary ring dynamics and the conditions in the early solar system.", wraplength=380)
     saturn_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(saturn_view_frame, text="Back", width=50, command=back_to_jupiter)
@@ -421,7 +421,7 @@ def saturn():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def uranus():  
-    global uranus_view_frame 
+    global uranus_view_frame, uranus_text_label, current_font_size
     uranus_view_frame = CTkFrame(root) 
     uranus_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -433,7 +433,7 @@ def uranus():
     uranus_text = CTkScrollableFrame(uranus_view_frame, width=400, height=250)
     uranus_text.place(relx=0.55, rely=0.545)
 
-    uranus_text_label = CTkLabel(uranus_text, text="Uranus is the seventh planet from the Sun and is classified as an ice giant due to its composition. It has a unique blue-green color due to the presence of methane in its atmosphere. Uranus is tilted on its side, with an axial tilt of 98 degrees, making its rotation nearly parallel to the Sun. This unusual tilt causes extreme seasonal variations during its 84-year orbit. Uranus has 27 known moons and a faint ring system composed of dark, narrow rings. The planet's atmosphere is primarily hydrogen and helium, with trace amounts of water, ammonia, and methane. Uranus' cold and featureless appearance belies the complex and dynamic processes occurring in its atmosphere and interior.", wraplength=380)
+    uranus_text_label = CTkLabel(uranus_text, font=planet_font, text="Uranus is the seventh planet from the Sun and is classified as an ice giant due to its composition. It has a unique blue-green color due to the presence of methane in its atmosphere. Uranus is tilted on its side, with an axial tilt of 98 degrees, making its rotation nearly parallel to the Sun. This unusual tilt causes extreme seasonal variations during its 84-year orbit. Uranus has 27 known moons and a faint ring system composed of dark, narrow rings. The planet's atmosphere is primarily hydrogen and helium, with trace amounts of water, ammonia, and methane. Uranus' cold and featureless appearance belies the complex and dynamic processes occurring in its atmosphere and interior.", wraplength=380)
     uranus_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(uranus_view_frame, text="Back", width=50, command=back_to_saturn)
@@ -444,7 +444,7 @@ def uranus():
     orbit_btn.place(relx=0.875, rely=0.52, anchor="center")  
 
 def neptune():  
-    global neptune_view_frame 
+    global neptune_view_frame, neptune_text_label, current_font_size
     neptune_view_frame = CTkFrame(root) 
     neptune_view_frame.pack(expand=True, fill=BOTH)  
 
@@ -456,7 +456,7 @@ def neptune():
     neptune_text = CTkScrollableFrame(neptune_view_frame, width=400, height=250)
     neptune_text.place(relx=0.55, rely=0.545)
 
-    neptune_text_label = CTkLabel(neptune_text, text="Neptune is the eighth planet from the Sun and is similar in composition to Uranus. It is an ice giant with a deep blue color due to the presence of methane in its atmosphere. Neptune has the strongest winds in the solar system, with speeds reaching up to 2,100 kilometers per hour (1,300 miles per hour). It has 14 known moons, with Triton being the largest. Triton is geologically active, with geysers of liquid nitrogen, making it one of the most interesting moons in the solar system. Neptune's atmosphere is dynamic, with large storms and dark spots similar to Jupiter's Great Red Spot. The planet's internal heat contributes to its weather patterns and the turbulent conditions in its atmosphere.", wraplength=380)
+    neptune_text_label = CTkLabel(neptune_text, font=planet_font, text="Neptune is the eighth planet from the Sun and is similar in composition to Uranus. It is an ice giant with a deep blue color due to the presence of methane in its atmosphere. Neptune has the strongest winds in the solar system, with speeds reaching up to 2,100 kilometers per hour (1,300 miles per hour). It has 14 known moons, with Triton being the largest. Triton is geologically active, with geysers of liquid nitrogen, making it one of the most interesting moons in the solar system. Neptune's atmosphere is dynamic, with large storms and dark spots similar to Jupiter's Great Red Spot. The planet's internal heat contributes to its weather patterns and the turbulent conditions in its atmosphere.", wraplength=380)
     neptune_text_label.pack(padx=10, pady=10)
 
     back_btn = CTkButton(neptune_view_frame, text="Back", width=50, command=back_to_uranus)
@@ -628,46 +628,55 @@ def system_theme():
     new_mode = "System" if current_mode == "Dark" else "Dark"
     ctk.set_appearance_mode(new_mode)
 
-#Zoom_----------  
+  
 
 def set_theme(theme):
     global current_theme
     current_theme = theme
     set_appearance_mode(theme)
     
-
+#font change----
 def set_font(new_font, current_font_size):  
     sun_text_label.configure(font = (new_font, current_font_size))
-    
+    mercury_text_label.configure(font = (new_font, current_font_size))
+    venus_text_label.configure(font = (new_font, current_font_size)) 
+    earth_text_label.configure(font = (new_font, current_font_size)) 
+    mars_text_label.configure(font = (new_font, current_font_size))
+    astbelt_text_label.configure(font = (new_font, current_font_size))
+    jupiter_text_label.configure(font = (new_font, current_font_size))
+    saturn_text_label.configure(font = (new_font, current_font_size))
+    uranus_text_label.configure(font = (new_font, current_font_size))
+    neptune_text_label.configure(font = (new_font, current_font_size))
 
+
+#Zoom----
 def zoom_in(current_font, current_font_size):  
     current_font_size = current_font_size +1
-    sun_text_label.configure(font = (current_font, current_font_size))
+    sun_text_label.configure(font = (current_font, current_font_size)) 
+    mercury_text_label.configure(font = (current_font, current_font_size)) 
+    venus_text_label.configure(font = (current_font, current_font_size)) 
+    earth_text_label.configure(font = (current_font, current_font_size))
+    mars_text_label.configure(font = (current_font, current_font_size))
+    astbelt_text_label.configure(font = (current_font, current_font_size))
+    jupiter_text_label.configure(font = (current_font, current_font_size))
+    saturn_text_label.configure(font = (current_font, current_font_size))
+    uranus_text_label.configure(font = (current_font, current_font_size))
+    neptune_text_label.configure(font = (current_font, current_font_size))
 
 
 def zoom_out(current_font, current_font_size): 
     current_font_size = current_font_size -1 
-    sun_text_label.configure(font = (current_font, current_font_size))
-
-#font functions  
-def arial(): 
-    pass
-
-def cambria(): 
-    pass 
-
-def cousine(): 
-    pass 
-
-def spectral(): 
-    pass 
-
-def helvetica(): 
-    pass 
-
-def calibri(): 
-    pass
-
+    sun_text_label.configure(font = (current_font, current_font_size)) 
+    mercury_text_label.configure(font = (current_font, current_font_size))
+    venus_text_label.configure(font = (current_font, current_font_size))
+    earth_text_label.configure(font = (current_font, current_font_size))
+    mars_text_label.configure(font = (current_font, current_font_size))
+    astbelt_text_label.configure(font = (current_font, current_font_size))
+    jupiter_text_label.configure(font = (current_font, current_font_size))
+    saturn_text_label.configure(font = (current_font, current_font_size))
+    uranus_text_label.configure(font = (current_font, current_font_size))
+    neptune_text_label.configure(font = (current_font, current_font_size))
+    
   
 #Menu Bar------------------------------------
 menu_bar = tk.Menu(main_frame)  
