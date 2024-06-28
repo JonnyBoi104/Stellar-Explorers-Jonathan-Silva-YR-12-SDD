@@ -9,10 +9,11 @@ from os import path
 main_path = path.dirname(path.abspath(__file__))
 assets_path = path.join(main_path, "assets") 
 
-#TEXT for each planet---------------------------------------- 
-sun_info = "The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma, with internal convective motion that generates a magnetic field via a dynamo process. It is by far the most important source of energy for life on Earth. Its diameter is about 1.39 million kilometers, and it accounts for about 99.86% of the total mass of the Solar System. The Sun's gravity holds the Solar System together, keeping everything from the biggest planets to the smallest particles of debris in its orbit. Solar energy is created deep within the core of the Sun, where the temperature is about 15 million degrees Celsius. This energy then radiates outward from the core and is emitted as sunlight and other forms of radiation." 
-
 #Images-------------------------------------------------------
+
+view_selection_path = path.join(assets_path, "view_selection_image.jpg") 
+view_selection_image = Image.open(view_selection_path)
+
 orbit_path = path.join(assets_path, "orbit.jpg") #image for orbit view
 orbit_image = Image.open(orbit_path) 
 
@@ -50,47 +51,20 @@ neptune_path = path.join(assets_path, "neptune-planet-space-5568916.webp")
 neptune_image = Image.open(neptune_path)
 
 #-------------------------------------------------------------------
+#Set font 
+current_font_size = 14 
+current_font = "Helvetica"
 
-
-
-
-# Variables for theme, zoom, and font style
+# Variables for theme, zoom, and font style 
+title_font = ("Helvetica", 35) 
 current_theme = "dark"
-font_size = 20
-font_family = "Helvetica"
+planet_font = (current_font, current_font_size) 
 
-font_style = ("Cambria", 35)
 
-def set_theme(theme):
-    global current_theme
-    current_theme = theme
-    set_appearance_mode(theme)
-    update_fonts()
 
-def set_zoom(zoom):
-    global font_size
-    font_size = int(zoom)
-    update_fonts()
 
-def set_font_style(font):
-    global font_family
-    font_family = font
-    update_fonts()
 
-def update_fonts():
-    global title_font, text_font
-    title_font = (font_family, font_size + 10)
-    text_font = (font_family, font_size)
 
-    # Update all widgets in the root window
-    update_widget_font(root)
-
-def update_widget_font(widget):
-    if isinstance(widget, (CTkScrollableFrame, CTkFrame)):
-        for child in widget.winfo_children():
-            update_widget_font(child)
-    elif isinstance(widget, CTkLabel):
-        widget.configure(font=text_font)
 
 # Main menu
 def main_menu():  
@@ -102,7 +76,7 @@ def main_menu():
     menu_background = CTkLabel(main_frame, text="", image=CTkImage(menu_image, size=(1000, 700)))
     menu_background.place(relx=0.5, rely=0.5, anchor="c")
 
-    title_label = CTkLabel(main_frame, text="Stellar Explorers", font=font_style, bg_color="transparent")
+    title_label = CTkLabel(main_frame, text="Stellar Explorers", font=title_font, bg_color="transparent")
     title_label.place(relx=0.5, rely=0.13, anchor="center") 
 
     start_btn = CTkButton(main_frame, text = "Start", command=select_view, width=200, height=50) 
@@ -261,7 +235,7 @@ def neptune_to_orbit():
 
 #PLANets--------------------------------------------------------------
 def sun():  
-    global sun_view_frame 
+    global sun_view_frame, sun_text_label
     sun_view_frame = CTkFrame(root) 
     sun_view_frame.pack(expand=True, fill=BOTH) 
 
@@ -273,7 +247,7 @@ def sun():
     sun_text = CTkScrollableFrame(sun_view_frame, width=400, height=250) 
     sun_text.place(relx=0.55, rely=0.545) 
 
-    sun_text_label = CTkLabel(sun_text, text= sun_info, wraplength=380)
+    sun_text_label = CTkLabel(sun_text, font=planet_font, text="The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma, with internal convective motion that generates a magnetic field via a dynamo process. It is by far the most important source of energy for life on Earth. Its diameter is about 1.39 million kilometers, and it accounts for about 99.86% of the total mass of the Solar System. The Sun's gravity holds the Solar System together, keeping everything from the biggest planets to the smallest particles of debris in its orbit. Solar energy is created deep within the core of the Sun, where the temperature is about 15 million degrees Celsius. This energy then radiates outward from the core and is emitted as sunlight and other forms of radiation." , wraplength=380)
     sun_text_label.pack(padx=10, pady=10)
 
     next_btn = CTkButton(sun_view_frame, text="Next", width=50, command=next_to_mercury) 
@@ -536,9 +510,12 @@ def select_view():
     main_frame.pack_forget()
     global select_view_frame
     select_view_frame = CTkFrame(root)
-    select_view_frame.pack(expand=True, fill=BOTH)
+    select_view_frame.pack(expand=True, fill=BOTH) 
 
-    select_view_label = CTkLabel(select_view_frame, text="What would You like to view?", font=font_style)
+    view_background = CTkLabel(select_view_frame, text="", image=CTkImage(view_selection_image, size=(900, 650)))
+    view_background.place(relx=0.5, rely=0.5, anchor="c") 
+
+    select_view_label = CTkLabel(select_view_frame, text="What would You like to view?", font=title_font)
     select_view_label.place(relx=0.5, rely=0.13, anchor="center")
 
     sequential_order_btn = CTkButton(select_view_frame, text="Sequentially View (The Sun)", width=100, height=80, command=sequential_view) 
@@ -629,7 +606,6 @@ y = (screen_height / 2) - (app_height / 2)
 root.geometry(f'{app_width}x{app_height}+{int(x)}+{int(y)}')
 
 set_appearance_mode(current_theme)
-update_fonts()
 main_menu()  
 
 
@@ -652,19 +628,49 @@ def system_theme():
     new_mode = "System" if current_mode == "Dark" else "Dark"
     ctk.set_appearance_mode(new_mode)
 
-#Zoom_---------- 
-def zoom_in(): 
-    global current_font 
-    current_font += 1  
-    set_font_style(current_font)
+#Zoom_----------  
+
+def set_theme(theme):
+    global current_theme
+    current_theme = theme
+    set_appearance_mode(theme)
+    
+
+def set_zoom(): 
+    current_font_size = current_font_size +1
+    sun_text_label.configure(font = (current_font_size))
+    
+
+def set_font(new_font, current_font_size):  
+    sun_text_label.configure(font = (new_font, current_font_size))
+    
+
+def zoom_in(current_font, new_font_size): 
+    sun_text_label.configure(font = (current_font, new_font_size))
 
 
 def zoom_out(): 
     pass 
 
-#Font------------ 
-def change_font_style(): 
+#font functions  
+def arial(): 
     pass
+
+def cambria(): 
+    pass 
+
+def cousine(): 
+    pass 
+
+def spectral(): 
+    pass 
+
+def helvetica(): 
+    pass 
+
+def calibri(): 
+    pass
+
   
 #Menu Bar------------------------------------
 menu_bar = tk.Menu(main_frame)  
@@ -680,7 +686,7 @@ menu_bar.add_cascade(label="Themes", menu=theme_menu)
 
 #Zoom=--------------------------
 zoom_menu = tk.Menu(menu_bar, tearoff=0)
-zoom_menu.add_command(label="Zoom In", command=zoom_in)
+zoom_menu.add_command(label="Zoom In", command=lambda: zoom_in(current_font, current_font_size +1))
 zoom_menu.add_command(label="Zoom Out", command=zoom_out)
 menu_bar.add_cascade(label="Zoom", menu=zoom_menu)
  
@@ -688,31 +694,21 @@ menu_bar.add_cascade(label="Zoom", menu=zoom_menu)
 
 
 # Create the 'Font' menu---------------------------------------- 
-fonts = ["Arial", "Cambria", "Cousine", "Spectral", "Helvetica", "Calibri"]
 font_menu = tk.Menu(menu_bar, tearoff=0)
-
-# Define available fonts
-fonts = ["Arial", "Cambria", "Cousine", "Spectral", "Helvetica", "Calibri"]
-
-# Add font options to the 'Font' menu
-for font in fonts:
-    font_menu.add_command(label=font, command=lambda f=font: change_font_style())
-
-# Add the 'Font' menu to the menu bar
+font_menu.add_command(label="Verdana", command=lambda: set_font("Verdana", current_font_size))
+font_menu.add_command(label="Cambria", command=lambda: set_font("Cambria", current_font_size))
+font_menu.add_command(label="Times New Roman", command=lambda: set_font("Times New Roman", current_font_size))
+font_menu.add_command(label="Roboto", command=lambda: set_font("Roboto", current_font_size))
+font_menu.add_command(label="Helvetica", command=lambda: set_font("Helvetica", current_font_size))
+font_menu.add_command(label="Calirbi", command=lambda: set_font("Calibri", current_font_size))
 menu_bar.add_cascade(label="Font", menu=font_menu)
 
-#Initialise current font size and font name 
-current_font_size=25
-current_font="Helvetica"
 
 # Attach the menu bar to the window
 root.config(menu=menu_bar) 
 
 #=------------------------------------- 
 
-#Set font 
-current_font_size = 12 
-current_font = "Helvetica"
 
 #-----------------------------------------------------------------------------
 
@@ -721,4 +717,3 @@ root.mainloop()
 
 #fix menu bar disspearring after neptune -> main menu 
 #do accessibility settings 
-#add a hide button that hides the scrollable frame
